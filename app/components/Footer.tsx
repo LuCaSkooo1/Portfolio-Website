@@ -41,14 +41,14 @@ export default function Footer() {
               icon: (
                 <>
                   <Image
-                    src="/inBugBlack.png"
+                    src="/InBug-Black.png"
                     alt="LinkedIn Logo"
                     width={24}
                     height={24}
                     className="dark:hidden"
                   />
                   <Image
-                    src="/inBugWhite.png"
+                    src="/InBug-White.png"
                     alt="LinkedIn Logo"
                     width={24}
                     height={24}
