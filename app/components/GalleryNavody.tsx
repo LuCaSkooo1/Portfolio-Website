@@ -168,7 +168,7 @@ function DesktopGallery({ images = "portfolio" }: GalleryProps) {
             <div className="relative w-full h-full group">
               <Image
                 src={image.src}
-                alt={image.alt}
+                alt="alt image"
                 fill
                 className="object-cover rounded-lg shadow-lg border border-white/20 transition-all duration-300"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -271,7 +271,7 @@ function MobileCarousel({ images = "portfolio" }: GalleryProps) {
                   >
                     <Image
                       src={image.src}
-                      alt={image.alt}
+                      alt="alt image"
                       fill
                       className="object-cover rounded-lg shadow-lg border border-white/20 transition-transform duration-300"
                       sizes="(max-width: 768px) 90vw, 80vw"
@@ -341,7 +341,7 @@ function Modal({
         <div className="relative w-full h-full max-w-5xl max-h-[70vh]">
           <Image
             src={selectedImage.src || "/placeholder.svg"}
-            alt={selectedImage.alt}
+            alt="alt image"
             fill
             className="object-contain rounded-lg"
             sizes="100vw"
