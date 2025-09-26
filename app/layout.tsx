@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: "Your Name | Portfolio",
+  title: "Lucas Ligas| Portfolio",
   description:
     "Designer & Developer portfolio showcasing web apps, design projects, and creative work.",
   openGraph: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Lucas Ligas Portfolio",
     images: [
       {
-        url: "https://yourdomain.com/ogImage.png",
+        url: "https://www.lucasligas.com/ogImage.png",
         width: 1200,
         height: 630,
         alt: "Lucas Ligas – Portfolio Preview",
