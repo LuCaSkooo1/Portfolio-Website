@@ -57,7 +57,7 @@ export default function Footer() {
                 </>
               ),
             },
-            { href: "/resume.pdf", icon: <FileUser size={24} /> },
+            { href: "/ligas_cv.pdf", icon: <FileUser size={24} /> },
             { href: "mailto:lucasligas15@gmail.com", icon: <Mail size={24} /> },
           ].map((item, index) => (
             <motion.a

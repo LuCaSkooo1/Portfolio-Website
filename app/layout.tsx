@@ -16,8 +16,33 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: "Lucas Ligas",
-  description: "Portfolio of Lucas Ligas",
+  title: "Your Name | Portfolio",
+  description:
+    "Designer & Developer portfolio showcasing web apps, design projects, and creative work.",
+  openGraph: {
+    title: "Lucas Ligas | Portfolio",
+    description:
+      "Explore my portfolio: web development, UI/UX, and creative projects.",
+    url: "https://www.lucasligas.com",
+    siteName: "Lucas Ligas Portfolio",
+    images: [
+      {
+        url: "https://yourdomain.com/ogImage.png",
+        width: 1200,
+        height: 630,
+        alt: "Lucas Ligas – Portfolio Preview",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lucas Ligas | Portfolio",
+    description:
+      "Explore my portfolio: web development, UI/UX, and creative projects.",
+    images: ["https://lucasligas.com/ogImage.png"],
+    creator: "@lucasligas",
+  },
 }
 
 export default function RootLayout({
