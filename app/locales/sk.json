@@ -4,6 +4,9 @@
     "about": "Lucas",
     "contact": "Kontakt"
   },
+  "cv": {
+    "path": "/ligas_cv_sk.pdf"
+  },
 
   "work": {
     "roleTitle": "Moja Úloha",

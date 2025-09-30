@@ -4,7 +4,9 @@
     "about": "Lucas",
     "contact": "Contact"
   },
-
+  "cv": {
+    "path": "/ligas_cv_en.pdf"
+  },
   "work": {
     "roleTitle": "My Role",
     "userPersonaTitle": "User Personas",
@@ -25,7 +27,7 @@
       "subtitle": "A selection of case studies I’ve crafted"
     },
     "cards": {
-      "subtitle": "Empowering Solvak Citizens with Tailored Guides and Tutorials for their life situations.",
+      "subtitle": "Empowering Solvak Citizens with Tailored Step by Step Guides and Tutorials for their life situations.",
       "subtitle2": "We help investors find development zones with infrastructure and citizens discover places to live.",
       "actionButton": "Learn more"
     },

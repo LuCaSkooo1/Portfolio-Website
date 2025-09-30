@@ -1,6 +1,12 @@
 "use client"
 
-import { useState, useContext, createContext, ReactNode } from "react"
+import {
+  useState,
+  useContext,
+  createContext,
+  ReactNode,
+  useEffect,
+} from "react"
 import en from "../locales/en.json"
 import sk from "../locales/sk.json"
 
@@ -10,7 +16,7 @@ type Language = "en" | "sk"
 // Infer JSON type
 type Translation = typeof en
 
-// Flatten nested keys helper (optional, keeps type-safe "hero.title" usage)
+// Flatten nested keys helper
 type NestedKeyOf<ObjectType extends object> = {
   [Key in keyof ObjectType & string]: ObjectType[Key] extends object
     ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
@@ -20,6 +26,9 @@ type NestedKeyOf<ObjectType extends object> = {
 type TranslationKey = NestedKeyOf<Translation>
 
 const translations: Record<Language, Translation> = { en, sk }
+
+// localStorage key
+const LANGUAGE_STORAGE_KEY = "preferred-language"
 
 interface LanguageContextType {
   lang: Language
@@ -32,7 +41,21 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 )
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Language>("sk") // default English
+  const [lang, setLang] = useState<Language>("sk") // default Slovak
+
+  // Initialize language from localStorage on mount
+  useEffect(() => {
+    const savedLang = localStorage.getItem(LANGUAGE_STORAGE_KEY) as Language
+    if (savedLang && (savedLang === "en" || savedLang === "sk")) {
+      setLang(savedLang)
+    }
+  }, [])
+
+  const updateLang = (newLang: Language) => {
+    setLang(newLang)
+    // Save to localStorage
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, newLang)
+  }
 
   const t = (key: TranslationKey): string | undefined => {
     return key
@@ -41,7 +64,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
+    <LanguageContext.Provider value={{ lang, setLang: updateLang, t }}>
       {children}
     </LanguageContext.Provider>
   )

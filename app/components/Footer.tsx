@@ -2,8 +2,10 @@
 import { FileUser, Mail } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { useTranslation } from "../lib/useTranslation"
 
 export default function Footer() {
+  const { lang, t } = useTranslation()
   return (
     <div className="w-full flex flex-row justify-center">
       <div className="flex flex-col justify-center">
@@ -57,7 +59,10 @@ export default function Footer() {
                 </>
               ),
             },
-            { href: "/ligas_cv.pdf", icon: <FileUser size={24} /> },
+            {
+              href: t("cv.path") || "/ligas_cv_en.pdf", // fallback
+              icon: <FileUser size={24} />,
+            },
             { href: "mailto:lucasligas15@gmail.com", icon: <Mail size={24} /> },
           ].map((item, index) => (
             <motion.a
