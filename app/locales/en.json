@@ -287,6 +287,9 @@
     "error2": "E-mail is required.",
     "error3": "Please enter a valid email address.",
     "error4": "Message cannot be empty.",
-    "error5": "Message must be at least 10 characters."
+    "error5": "Message must be at least 10 characters.",
+    "labelName": "Your full name",
+    "labelEmail": "Your e-mail",
+    "labelMessage": "Your Message"
   }
 }

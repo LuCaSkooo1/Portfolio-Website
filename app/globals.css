@@ -174,6 +174,12 @@
   background-size: auto, 400% 400%;
 }
 
+.dark .hero-ksk {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, #000000 100%),
+    linear-gradient(-45deg, #1a1400, #262003, #332a05, #403307);
+  background-size: auto, 400% 400%;
+}
+
 .hero-guides {
   background: linear-gradient(
       to bottom,
@@ -181,6 +187,12 @@
       #f9fafb 100%
     ),
     linear-gradient(-45deg, #fff7ed, #e8e8fe, #dfecff, #eef2ff);
+  background-size: auto, 400% 400%;
+}
+
+.dark .hero-guides {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, #000000 100%),
+    linear-gradient(-45deg, #0a0f1a, #0f172a, #1e293b, #0b1220);
   background-size: auto, 400% 400%;
 }
 

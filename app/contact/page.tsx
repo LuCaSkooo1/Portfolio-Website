@@ -171,7 +171,7 @@ export default function Contact() {
           </motion.p>
 
           <motion.div
-            className="w-[90%] lg:w-[30%] mt-10"
+            className="w-[90%] lg:w-[30%] mt-10 flex flex-col md:flex-row md:items-center md:justify-center gap-5 mb-5"
             variants={fadeInUp}
             transition={{ delay: 0.2 }}
           >
@@ -181,7 +181,7 @@ export default function Contact() {
             </motion.p>
 
             <motion.p
-              className="flex flex-row gap-2 mb-5 mt-2"
+              className="flex flex-row gap-2"
               variants={fadeInUp}
               transition={{ delay: 0.3 }}
             >
@@ -204,7 +204,7 @@ export default function Contact() {
               <Input
                 id="name"
                 type="text"
-                placeholder="John Doe"
+                placeholder={t("contact.labelName")}
                 className={`rounded-xl p-5 bg-white mb-1 font-grotesk ${
                   errors.name ? "border-red-500" : ""
                 }`}
@@ -224,7 +224,7 @@ export default function Contact() {
               <Input
                 id="email"
                 type="email"
-                placeholder="johndoe@example.com"
+                placeholder={t("contact.labelEmail")}
                 className={`rounded-xl p-5 bg-white mb-1 font-grotesk ${
                   errors.email ? "border-red-500" : ""
                 }`}
@@ -246,7 +246,7 @@ export default function Contact() {
                 className={`bg-white rounded-xl resize-none overflow-auto mb-1 font-grotesk ${
                   errors.message ? "border-red-500" : ""
                 }`}
-                placeholder="Hello ..."
+                placeholder={t("contact.labelMessage")}
                 value={formData.message}
                 onChange={handleInputChange}
                 rows={5}

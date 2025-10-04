@@ -96,6 +96,7 @@ export default function Home() {
                 variant="client"
                 title={t("work.ksk.CPSCards.client.title")}
                 description={t("work.ksk.CPSCards.client.description")}
+                clientHref="https://www.kosickazupa.sk/"
               />
             </div>
             <div className="w-full lg:max-w-[25%]">

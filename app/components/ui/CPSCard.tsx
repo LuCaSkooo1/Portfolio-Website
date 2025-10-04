@@ -8,7 +8,8 @@ interface ProjectCardProps {
   description?: string
   actionText?: string
   actionHref?: string
-  clientColor?: "blue" | "yellow" // NEW: only applies when variant is "client"
+  clientHref?: string
+  clientColor?: "blue" | "yellow"
 }
 
 const iconMap = {
@@ -45,7 +46,8 @@ export function CPSCard({
   description,
   actionText,
   actionHref,
-  clientColor = "blue", // default for client
+  clientHref,
+  clientColor = "blue",
 }: ProjectCardProps) {
   const Icon = iconMap[variant]
   const colors =
@@ -69,8 +71,8 @@ export function CPSCard({
         {description}
       </p>
 
-      {actionText && actionHref ? (
-        <div className="mt-auto">
+      <div className="mt-auto space-y-3">
+        {actionText && actionHref && (
           <a
             href={actionHref}
             target="_blank"
@@ -79,8 +81,19 @@ export function CPSCard({
             <span className="font-grotesk">{actionText}</span>
             <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1 duration-300" />
           </a>
-        </div>
-      ) : null}
+        )}
+
+        {variant === "client" && (
+          <a
+            href={clientHref}
+            target="_blank"
+            className={`flex items-center ${colors.iconColor} font-medium group transition-all duration-300 cursor-pointer`}
+          >
+            <span className="font-grotesk">{t("work.cards.actionButton")}</span>
+            <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1 duration-300" />
+          </a>
+        )}
+      </div>
     </div>
   )
 }

@@ -60,7 +60,7 @@ export default function Footer() {
               ),
             },
             {
-              href: t("cv.path") || "/ligas_cv_en.pdf", // fallback
+              href: t("cv.path") || "/cv_en_web.pdf", // fallback
               icon: <FileUser size={24} />,
             },
             { href: "mailto:lucasligas15@gmail.com", icon: <Mail size={24} /> },

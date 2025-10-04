@@ -7,7 +7,6 @@
   "cv": {
     "path": "/ligas_cv_sk.pdf"
   },
-
   "work": {
     "roleTitle": "Moja Úloha",
     "userPersonaTitle": "Persóny Používateľov",
@@ -282,6 +281,9 @@
     "error2": "E-mail je povinný.",
     "error3": "Zadajte platnú e-mailovú adresu.",
     "error4": "Správa nesmie byť prázdna.",
-    "error5": "Správa musí mať aspoň 10 znakov."
+    "error5": "Správa musí mať aspoň 10 znakov.",
+    "labelName": "Tvoje celé meno",
+    "labelEmail": "Tvoj e-mail",
+    "labelMessage": "Tvoja správa"
   }
 }

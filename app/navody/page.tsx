@@ -95,6 +95,7 @@ export default function Home() {
                 variant="client"
                 title={t("work.navody.CPSCards.client.title")}
                 description={t("work.navody.CPSCards.client.description")}
+                clientHref="https://mirri.gov.sk/"
               />
             </div>
             <div className="w-full lg:max-w-[25%]">
