@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import { LanguageProvider } from "./lib/useTranslation"
+import { Analytics } from "@vercel/analytics/next"
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-plus-jakarta",
@@ -64,6 +65,7 @@ export default function RootLayout({
             <Footer />
           </LanguageProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
