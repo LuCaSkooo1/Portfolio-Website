@@ -79,7 +79,7 @@ export default function Header() {
           type="button"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           data-scrolled={isScrolled}
-          className="flex size-14 min-w-14 flex-row items-center justify-center rounded-full border border-transparent bg-transparent px-4 py-2 backdrop-blur-sm transition-all duration-300 data-[scrolled=true]:border-white/20 data-[scrolled=true]:bg-[#fbfbfb]/70 data-[scrolled=true]:dark:bg-black/70 text-foreground"
+          className="flex size-14 min-w-14 flex-row items-center justify-center rounded-full border border-transparent bg-transparent px-4 py-2 backdrop-blur-sm transition-all duration-300 data-[scrolled=true]:border-white/20 data-[scrolled=true]:bg-[#fbfbfb]/70 data-[scrolled=true]:dark:bg-black/70 text-foreground cursor-pointer"
         >
           <Sun className="dark:-rotate-90 absolute rotate-0 scale-100 transition-all dark:scale-0" />
           <Moon className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
