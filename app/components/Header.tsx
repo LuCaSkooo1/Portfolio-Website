@@ -82,10 +82,11 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setLang(lang === "sk" ? "en" : "sk")}
-              className="z-10 rounded-md border border-transparent px-3 py-2 font-mono uppercase text-xs hover:border-[color:var(--accent-cyber)]/30 hover:text-[color:var(--accent-cyber)] transition-colors"
+              className="z-10 shrink-0 rounded-md border border-transparent px-1.5 py-2 sm:px-3 font-mono uppercase text-xs hover:border-[color:var(--accent-cyber)]/30 hover:text-[color:var(--accent-cyber)] transition-colors"
               title="Toggle language"
             >
-              lang={lang}
+              <span className="hidden sm:inline">lang=</span>
+              {lang}
             </button>
           </div>
         </nav>
