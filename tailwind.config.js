@@ -9,8 +9,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        jakarta: ["var(--font-plus-jakarta)", "sans-serif"],
-        grotesk: ["var(--font-space-grotesk)", "sans-serif"],
+        jakarta: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
+        grotesk: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
+        mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
       },
     },
   },

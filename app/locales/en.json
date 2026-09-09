@@ -1,8 +1,8 @@
 {
   "nav": {
-    "work": "Work",
-    "about": "Lucas",
-    "contact": "Contact"
+    "work": "work",
+    "about": "about",
+    "contact": "contact"
   },
   "cv": {
     "path": "/cv_en_web.pdf"
@@ -22,9 +22,11 @@
     "openFigma": "Open in Figma",
 
     "hero": {
-      "title": "HI. I’m Lucas.",
-      "title2": "Designer & Developer.",
-      "subtitle": "A selection of case studies I’ve crafted"
+      "prompt": "$ whoami",
+      "line1": "lucas.ligas",
+      "line2": "role: cybersecurity enthusiast",
+      "line3": "status: building. breaking. learning.",
+      "subtitle": "// selected case studies"
     },
     "cards": {
       "subtitle": "Empowering Solvak Citizens with Tailored Step by Step Guides and Tutorials for their life situations.",
@@ -33,7 +35,7 @@
     },
 
     "actionButton": "View Live Solution",
-    "otherProjects": "Other Figma Projects",
+    "otherProjects": "// other figma projects",
 
     "navody": {
       "hero": {
@@ -257,32 +259,33 @@
 
   "about": {
     "hero": {
-      "title": "I’m Lucas."
+      "title": "$ cat about.md"
     },
     "about": {
-      "title": "Designing and building digital products that solve real-world problems.",
-      "description": "I’m Lucas Ligas, a UI/UX designer and frontend developer from Slovakia. I’ve worked on a government project and led my team Incomodum to multiple hackathon wins — with our ideas now implemented across Slovakia.",
-      "description2": "I’m passionate about design thinking and creating digital solutions that are both functional and meaningful."
+      "title": "// Frontend engineer pivoting into cybersecurity.",
+      "description": "I’m Lucas Ligas, a developer from Slovakia with a background in frontend and product design. I’ve shipped a government project and led my team Incomodum to multiple hackathon wins — with our ideas now running across Slovakia.",
+      "description2": "Now I’m focused on cybersecurity: learning offensive and defensive fundamentals, playing CTFs, and using my product-building instincts to think about systems from an attacker’s perspective."
     },
     "experience": {
-      "title": "Experience",
-      "description": "I first discovered UI/UX and frontend development in high school, where I also interned at Wezeo.",
-      "description2": "In my third year, I co-founded Incomodum, a team that competed in five Slovak hackathons, winning 1st place once, 2nd place three times, and 3rd place once.",
-      "description3": "During one of these events, I was invited to work as a UI/UX consultant for the Košice Self-Governing Region."
+      "title": "// history --experience",
+      "description": "I first got into web development in high school, where I also interned at Wezeo.",
+      "description2": "In my third year, I co-founded Incomodum, a team that competed in five Slovak hackathons — winning 1st once, 2nd three times, and 3rd once.",
+      "description3": "During one of these events, I was invited to work as a UI/UX consultant for the Košice Self-Governing Region.",
+      "description4": "After highschool I joined Ekvia as an IT admin. That's where networking and network security really clicked for me — and where my pivot into cybersecurity started."
     },
-    "foundation": "Foundation",
+    "foundation": "// foundation",
     "highschool": "Highschool",
     "highschoolName": "Programming of Digital Technologies"
   },
 
   "contact": {
     "hero": {
-      "title": "Contact.",
-      "subtitle": "Right now am open for work and collaborations."
+      "title": "$ cat contact.md",
+      "subtitle": "// open for work and collaborations."
     },
-    "submit": "Submit",
-    "input1": "Full name",
-    "input2": "Message",
+    "submit": "./send-message",
+    "input1": "name",
+    "input2": "message",
     "error1": "Full name is required.",
     "error2": "E-mail is required.",
     "error3": "Please enter a valid email address.",

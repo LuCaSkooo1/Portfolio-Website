@@ -1,19 +1,18 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import { Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google"
+import { JetBrains_Mono } from "next/font/google"
 import { ThemeProvider } from "next-themes"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import { LanguageProvider } from "./lib/useTranslation"
 import { Analytics } from "@vercel/analytics/next"
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-plus-jakarta",
-})
+import TerminalOverlay from "./components/TerminalOverlay"
+import BootSequence from "./components/BootSequence"
+import AccentSync from "./components/AccentSync"
 
-const spaceGrotesk = Space_Grotesk({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-jetbrains-mono",
 })
 
 export const metadata: Metadata = {
@@ -55,14 +54,17 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${plusJakarta.variable} ${spaceGrotesk.variable}`}
+      className={`${jetbrainsMono.variable}`}
     >
       <body>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <LanguageProvider>
+            <AccentSync />
+            <BootSequence />
             <Header />
             {children}
             <Footer />
+            <TerminalOverlay />
           </LanguageProvider>
         </ThemeProvider>
         <Analytics />

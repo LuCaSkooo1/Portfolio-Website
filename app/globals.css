@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "tailwind-scrollbar-hide/v4";
@@ -47,8 +46,9 @@
 
 @layer base {
   :root {
-    --font-plus-jakarta: "Plus Jakarta Sans", sans-serif;
-    --font-space-grotesk: "Space Grotesk", sans-serif;
+    --font-mono-cyber: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+    --accent-cyber: #00d97e;
+    --accent-cyber-dim: #00d97e33;
     --background: oklch(0.9846 0.0017 247.84);
     --foreground: oklch(0.2101 0.0318 264.66);
     --foreground2: oklch(0.551 0.0234 264.36);
@@ -86,6 +86,8 @@
   }
 
   .dark {
+    --accent-cyber: #00ff88;
+    --accent-cyber-dim: #00ff8833;
     --background: oklch(0 0 0);
     --foreground: oklch(0.985 0 0);
     --foreground2: oklch(91.887% 0.0001 271.152);
@@ -126,17 +128,20 @@
   }
   body {
     @apply bg-background text-foreground2;
+    font-family: var(--font-mono-cyber);
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
 
   p,
   h3 {
-    font-family: var(--font-space-grotesk);
+    font-family: var(--font-mono-cyber);
   }
 
   h1,
   h2 {
     @apply text-foreground;
-    font-family: var(--font-plus-jakarta);
+    font-family: var(--font-mono-cyber);
+    letter-spacing: -0.02em;
   }
 }
 @keyframes gradient {
@@ -159,19 +164,57 @@
       rgba(255, 255, 255, 0) 70%,
       #f9fafb 100%
     ),
-    linear-gradient(-45deg, #fff7ed, #fee8e8, #ecfeff, #eef2ff);
+    linear-gradient(-45deg, #ecfdf5, #d1fae5, #ecfeff, #f0fdf4);
 
   background-size: auto, 400% 400%;
   background-repeat: no-repeat;
   background-attachment: scroll;
 
   animation: gradient 15s ease infinite;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(from var(--accent-cyber) r g b / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(from var(--accent-cyber) r g b / 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
 }
 
 .dark .hero {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, #000000 100%),
-    linear-gradient(-45deg, #000000, #2d2d2d, #1a1a1a, #0a0a0a);
+    linear-gradient(-45deg, #000000, #05170f, #001a10, #000807);
   background-size: auto, 400% 400%;
+}
+
+.dark .hero::before {
+  background-image:
+    linear-gradient(rgb(from var(--accent-cyber) r g b / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(from var(--accent-cyber) r g b / 0.08) 1px, transparent 1px);
+}
+
+/* Per-page accent overrides. Header is outside {children} so it stays green. */
+[data-accent="amber"] {
+  --accent-cyber: #ffc03b;
+  --accent-cyber-dim: #ffc03b33;
+}
+.dark [data-accent="amber"] {
+  --accent-cyber: #ffd166;
+  --accent-cyber-dim: #ffd16633;
+}
+
+[data-accent="blue"] {
+  --accent-cyber: #325fab;
+  --accent-cyber-dim: #325fab33;
+}
+.dark [data-accent="blue"] {
+  --accent-cyber: #3e86ff;
+  --accent-cyber-dim: #3e86ff33;
 }
 
 .dark .hero-ksk {
@@ -206,12 +249,88 @@
   background-size: auto, 400% 400%;
 }
 
-.font-plus {
-  font-family: var(--font-plus-jakarta);
+.font-plus,
+.font-grotesk,
+.font-mono-cyber {
+  font-family: var(--font-mono-cyber);
 }
 
-.font-grotesk {
-  font-family: var(--font-space-grotesk);
+.text-cyber {
+  color: var(--accent-cyber);
+}
+
+.bg-cyber {
+  background-color: var(--accent-cyber);
+}
+
+.border-cyber {
+  border-color: var(--accent-cyber);
+}
+
+@keyframes caret-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.caret::after {
+  content: "▊";
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--accent-cyber);
+  animation: caret-blink 1s steps(1) infinite;
+  transform: translateY(1px);
+}
+
+.caret-inline {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--accent-cyber);
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+.terminal-window {
+  background: rgba(0, 0, 0, 0.92);
+  border: 1px solid var(--accent-cyber);
+  box-shadow: 0 0 40px rgba(0, 217, 126, 0.15), inset 0 0 60px rgba(0, 217, 126, 0.03);
+  color: var(--accent-cyber);
+  font-family: var(--font-mono-cyber);
+}
+
+/* Per-card terminal cards: uses --card-accent (light) and --card-accent-d (dark)
+   set inline via style prop. Border + accent text auto-swap on theme. */
+.card-term {
+  border-color: var(--card-accent);
+}
+.dark .card-term {
+  border-color: var(--card-accent-d);
+}
+.card-term-accent {
+  color: var(--card-accent);
+}
+.dark .card-term-accent {
+  color: var(--card-accent-d);
+}
+
+.scanlines {
+  position: relative;
+}
+
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    rgba(0, 0, 0, 0.06) 2px,
+    rgba(0, 0, 0, 0.06) 3px
+  );
+  mix-blend-mode: multiply;
 }
 
 /* Embla Carousel base styles */

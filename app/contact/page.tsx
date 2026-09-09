@@ -26,7 +26,7 @@ export default function Contact() {
   }, [])
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { id, value } = e.target
     setFormData((prev) => ({
@@ -92,22 +92,13 @@ export default function Contact() {
       setIsSubmitting(false)
     }
   }
+
   const fadeInUp: Variants = {
-    hidden: {
-      opacity: 0,
-      y: 20,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.5, ease: "easeOut" },
     },
   }
 
@@ -115,33 +106,22 @@ export default function Contact() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.1, delayChildren: 0.05 },
     },
   }
+
+  const inputClass = `rounded-md p-5 h-11 font-mono bg-white/60 dark:bg-black/60 border-[#00d97e]/40 dark:border-[#00ff88]/30 text-foreground focus-visible:border-[#00d97e] dark:focus-visible:border-[#00ff88] focus-visible:ring-[#00d97e]/20 dark:focus-visible:ring-[#00ff88]/20`
+
+  const title = t("contact.hero.title") ?? "$ cat contact.md"
+  const subtitle = t("contact.hero.subtitle") ?? ""
 
   if (!isLoaded) {
     return (
       <div className="hero">
-        <div className="w-full flex flex-col justify-center items-center">
-          <h1 className="text-3xl md:text-5xl mt-30 text-center font-extrabold">
-            {t("contact.hero.title")}
+        <div className="w-full flex flex-col justify-center items-center px-5">
+          <h1 className="text-2xl md:text-4xl mt-32 text-center font-bold font-mono text-cyber">
+            {title}
           </h1>
-          <p className="font-light mt-5 md:mt-10 w-[90%] text-center">
-            {t("contact.hero.subtitle")}
-          </p>
-          <div className="w-[90%] lg:w-[30%] mt-10">
-            <p className="flex flex-row gap-2">
-              <Phone className="text-[#FFD287] dark:text-[#5e5e5e]" />
-              +421 908 836 366
-            </p>
-            <p className="flex flex-row gap-2 mb-5 mt-2">
-              <Mail className="text-[#FFD287] dark:text-[#5e5e5e]" />
-              lucasligas15@gmail.com
-            </p>
-          </div>
         </div>
       </div>
     )
@@ -151,99 +131,120 @@ export default function Contact() {
     <div>
       <div className="hero">
         <motion.div
-          className="w-full flex flex-col justify-center items-center"
+          className="w-full flex flex-col justify-center items-center px-5 pb-16"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
         >
           <motion.h1
-            className="text-3xl md:text-5xl mt-30 text-center font-extrabold"
+            className="text-2xl md:text-4xl mt-32 text-center font-bold font-mono text-cyber w-full max-w-4xl"
             variants={fadeInUp}
           >
-            {t("contact.hero.title")}
+            {title}
+            <span className="caret-inline" />
           </motion.h1>
 
           <motion.p
-            className="font-light mt-5 md:mt-10 w-[90%] text-center"
+            className="font-mono text-sm md:text-base mt-4 text-center text-foreground2/80 opacity-90"
             variants={fadeInUp}
           >
-            {t("contact.hero.subtitle")}
+            {subtitle}
           </motion.p>
 
+          {/* Contact info block — styled as terminal readout */}
           <motion.div
-            className="w-[90%] lg:w-[30%] mt-10 flex flex-col md:flex-row md:items-center md:justify-center gap-5 mb-5"
+            className="w-full max-w-lg mt-10 rounded-md border border-[#00d97e]/40 dark:border-[#00ff88]/30 bg-white/60 dark:bg-black/60 backdrop-blur-sm p-4 md:p-5 font-mono text-sm md:text-base"
             variants={fadeInUp}
-            transition={{ delay: 0.2 }}
           >
-            <motion.p className="flex flex-row gap-2" variants={fadeInUp}>
-              <Phone className="text-[#FFD287] dark:text-[#5e5e5e]" />
-              +421 908 836 366
-            </motion.p>
-
-            <motion.p
-              className="flex flex-row gap-2"
-              variants={fadeInUp}
-              transition={{ delay: 0.3 }}
-            >
-              <Mail className="text-[#FFD287] dark:text-[#5e5e5e]" />
-              lucasligas15@gmail.com
-            </motion.p>
+            <div className="flex flex-col gap-1.5">
+              <div className="flex items-center gap-3">
+                <Phone size={16} className="text-cyber shrink-0" />
+                <span className="text-cyber min-w-[70px]">phone</span>
+                <span className="opacity-50">:</span>
+                <a
+                  href="tel:+421908836366"
+                  className="text-foreground hover:text-cyber transition-colors break-all"
+                >
+                  +421 908 836 366
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail size={16} className="text-cyber shrink-0" />
+                <span className="text-cyber min-w-[70px]">email</span>
+                <span className="opacity-50">:</span>
+                <a
+                  href="mailto:lucasligas15@gmail.com"
+                  className="text-foreground hover:text-cyber transition-colors break-all"
+                >
+                  lucasligas15@gmail.com
+                </a>
+              </div>
+            </div>
           </motion.div>
 
+          {/* Form — styled as terminal-inspired inputs */}
           <motion.form
-            className="w-[90%] lg:w-[30%]"
+            className="w-full max-w-lg mt-8 font-mono"
             variants={fadeInUp}
-            transition={{ delay: 0.2 }}
             onSubmit={handleSubmit}
           >
-            {/* Full name */}
-            <motion.div variants={fadeInUp} transition={{ delay: 0.4 }}>
-              <label htmlFor="name" className="text-sm font-grotesk">
+            <motion.div variants={fadeInUp}>
+              <label
+                htmlFor="name"
+                className="text-sm text-cyber flex items-center gap-2"
+              >
+                <span className="opacity-60">&gt;</span>
                 {t("contact.input1")}
               </label>
               <Input
                 id="name"
                 type="text"
                 placeholder={t("contact.labelName")}
-                className={`rounded-xl p-5 bg-white mb-1 font-grotesk ${
+                className={`${inputClass} mb-1 ${
                   errors.name ? "border-red-500" : ""
                 }`}
                 value={formData.name}
                 onChange={handleInputChange}
               />
               {errors.name && (
-                <p className="text-red-500 text-xs mb-2">{errors.name}</p>
+                <p className="text-red-400 text-xs mb-2">{errors.name}</p>
               )}
             </motion.div>
 
-            {/* Email */}
-            <motion.div variants={fadeInUp} transition={{ delay: 0.5 }}>
-              <label htmlFor="email" className="text-sm font-grotesk">
-                E-mail
+            <motion.div variants={fadeInUp} className="mt-3">
+              <label
+                htmlFor="email"
+                className="text-sm text-cyber flex items-center gap-2"
+              >
+                <span className="opacity-60">&gt;</span>
+                email
               </label>
               <Input
                 id="email"
                 type="email"
                 placeholder={t("contact.labelEmail")}
-                className={`rounded-xl p-5 bg-white mb-1 font-grotesk ${
+                className={`${inputClass} mb-1 ${
                   errors.email ? "border-red-500" : ""
                 }`}
                 value={formData.email}
                 onChange={handleInputChange}
               />
               {errors.email && (
-                <p className="text-red-500 text-xs mb-2">{errors.email}</p>
+                <p className="text-red-400 text-xs mb-2">{errors.email}</p>
               )}
             </motion.div>
 
-            {/* Message */}
-            <motion.div variants={fadeInUp} transition={{ delay: 0.6 }}>
-              <label htmlFor="message" className="text-sm font-grotesk">
+            <motion.div variants={fadeInUp} className="mt-3">
+              <label
+                htmlFor="message"
+                className="text-sm text-cyber flex items-center gap-2"
+              >
+                <span className="opacity-60">&gt;</span>
                 {t("contact.input2")}
               </label>
               <Textarea
                 id="message"
-                className={`bg-white rounded-xl resize-none overflow-auto mb-1 font-grotesk ${
+                className={`${inputClass} rounded-md resize-none overflow-auto mb-1 h-auto ${
                   errors.message ? "border-red-500" : ""
                 }`}
                 placeholder={t("contact.labelMessage")}
@@ -252,18 +253,17 @@ export default function Contact() {
                 rows={5}
               />
               {errors.message && (
-                <p className="text-red-500 text-xs mb-2">{errors.message}</p>
+                <p className="text-red-400 text-xs mb-2">{errors.message}</p>
               )}
             </motion.div>
 
-            {/* Success + Error states */}
             {submitStatus === "success" && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mb-4 p-3 bg-green-100 text-green-800 rounded-xl text-sm"
+                className="mt-4 p-3 border border-[#00d97e]/50 bg-[#00d97e]/10 text-cyber rounded-md text-sm"
               >
-                Message sent successfully!
+                [ OK ] message delivered.
               </motion.div>
             )}
 
@@ -271,23 +271,21 @@ export default function Contact() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mb-4 p-3 bg-red-100 text-red-800 rounded-xl text-sm"
+                className="mt-4 p-3 border border-red-500/50 bg-red-500/10 text-red-400 rounded-md text-sm"
               >
-                Failed to send message. Please try again.
+                [ FAIL ] delivery failed. try again.
               </motion.div>
             )}
 
-            {/* Submit button */}
             <motion.button
               type="submit"
-              className="mt-5 full bg-[#FFD287] dark:bg-[#494949] text-white font-grotesk w-full p-2 rounded-xl active:bg-[#e6b96b] dark:active:bg-[#5e5e5e] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              className="mt-6 bg-[#00d97e] hover:bg-[#00c26f] dark:bg-black dark:hover:bg-[#00ff88]/10 dark:border dark:border-[#00ff88] dark:text-[#00ff88] text-black font-mono w-full p-3 rounded-md active:bg-[#00b364] dark:active:bg-[#00ff88]/20 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               variants={fadeInUp}
-              transition={{ delay: 0.7 }}
-              whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
-              whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+              whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+              whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Sending..." : t("contact.submit")}
+              {isSubmitting ? "sending..." : t("contact.submit")}
             </motion.button>
           </motion.form>
         </motion.div>

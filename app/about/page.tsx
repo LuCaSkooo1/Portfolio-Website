@@ -18,6 +18,7 @@ export default function About() {
   }
 
   const timelineData: TimelineItem[] = [
+    { title: "Ekvia", role: "IT Admin", period: "2025~" },
     { title: "Košický S. Kraj", role: "UI UX Consultant", period: "2024-2025" },
     { title: "Incomodum", role: "Designer / Dev", period: "2022~" },
     { title: "Wezeo", role: "Dev Internship", period: "2020-2025" },
@@ -29,14 +30,11 @@ export default function About() {
     },
   ]
 
-  // Animation variants with proper TypeScript types
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.08 },
     },
   }
 
@@ -45,10 +43,7 @@ export default function About() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.6, ease: "easeOut" },
     },
   }
 
@@ -57,10 +52,7 @@ export default function About() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.7, ease: "easeOut" },
     },
   }
 
@@ -69,10 +61,7 @@ export default function About() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.7, ease: "easeOut" },
     },
   }
 
@@ -81,10 +70,7 @@ export default function About() {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.6, ease: "easeOut" },
     },
   }
 
@@ -93,31 +79,22 @@ export default function About() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12,
-      },
+      transition: { type: "spring", stiffness: 100, damping: 12 },
     },
     hover: {
       scale: 1.02,
       x: 10,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
+      transition: { type: "spring", stiffness: 400, damping: 10 },
     },
   }
 
-  // Card component inside the same file
   const TimelineCard: React.FC<Omit<TimelineItem, "label">> = ({
     title,
     role,
     period,
   }) => (
     <motion.div
-      className="rounded-full bg-[#FFD287] dark:bg-black dark:border dark:border-white/20 flex flex-row justify-between items-center p-4 px-7 mb-3"
+      className="rounded-md bg-white dark:bg-black border border-[#00d97e]/40 dark:border-[#00ff88]/30 hover:border-[#00d97e] dark:hover:border-[#00ff88] flex flex-row justify-between items-center p-4 px-5 mb-3 font-mono"
       variants={timelineCardVariants}
       whileHover="hover"
       whileTap={{ scale: 0.98 }}
@@ -125,14 +102,16 @@ export default function About() {
       animate="visible"
     >
       <div className="flex flex-col">
-        <p className="font-bold leading-tight">{title}</p>
-        <p className="text-sm leading-tight">{role}</p>
+        <p className="font-bold leading-tight text-foreground">
+          <span className="text-[#00d97e] mr-2">▸</span>
+          {title}
+        </p>
+        <p className="text-sm leading-tight opacity-70">{role}</p>
       </div>
-      <p className="text-xl font-bold">{period}</p>
+      <p className="text-xl font-bold opacity-60">{period}</p>
     </motion.div>
   )
 
-  // Reset animation flag on component mount
   useEffect(() => {
     hasAnimatedRef.current = false
   }, [])
@@ -141,28 +120,30 @@ export default function About() {
     <>
       <div className="hero">
         <motion.div
-          className="w-full flex flex-col justify-center items-center"
+          className="w-full flex flex-col justify-center items-center px-5"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
         >
           <motion.h1
-            className="text-3xl md:text-5xl mt-30 text-center font-extrabold"
+            className="text-2xl md:text-4xl mt-32 text-center font-bold font-mono w-full max-w-4xl text-cyber"
             variants={slideUpVariants}
           >
             {t("about.hero.title")}
+            <span className="caret-inline" />
           </motion.h1>
         </motion.div>
 
+        {/* $ cat bio.md */}
         <motion.div
-          className="container flex flex-col lg:flex-row justify-center gap-10 md:gap-20 items-center mx-auto mt-10"
+          className="container flex flex-col lg:flex-row justify-center gap-10 md:gap-20 items-start mx-auto mt-16 px-5"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
         >
           <motion.div
-            className="overflow-clip h-fit flex flex-row justify-center items-baseline rounded-t-full w-[90%] lg:w-[35%]"
+            className="overflow-clip h-fit flex flex-row justify-center items-baseline rounded-md w-[90%] lg:w-[35%] border border-[#00d97e]/30 dark:border-[#00ff88]/20 p-1"
             variants={scaleUpVariants}
           >
             <Image
@@ -170,58 +151,72 @@ export default function About() {
               alt="ja fotka"
               width={2731}
               height={4096}
-              className="w-full h-auto object-cover object-top aspect-square rounded-b-md "
+              className="w-full h-auto object-cover object-top aspect-square rounded-sm grayscale contrast-125 hover:grayscale-0 transition-all duration-500"
               priority
               placeholder="blur"
             />
           </motion.div>
 
           <motion.div
-            className="flex flex-col w-[90%] lg:max-w-[40%] h-full"
+            className="flex flex-col w-[90%] lg:max-w-[40%] h-full font-mono"
             variants={slideUpVariants}
           >
+            <motion.div
+              className="text-cyber text-sm mb-2 opacity-80"
+              variants={slideUpVariants}
+            >
+              $ cat bio.md
+            </motion.div>
             <motion.h2
-              className="text-2xl md:text-3xl font-bold"
+              className="text-xl md:text-2xl font-bold text-foreground"
               variants={slideUpVariants}
             >
               {t("about.about.title")}
             </motion.h2>
-            <div className="h-auto grow" />
-            <motion.p className="mt-10" variants={slideUpVariants}>
+            <motion.p className="mt-6 opacity-90" variants={slideUpVariants}>
               {t("about.about.description")}
             </motion.p>
-            <motion.p className="mt-10" variants={slideUpVariants}>
+            <motion.p className="mt-4 opacity-90" variants={slideUpVariants}>
               {t("about.about.description2")}
             </motion.p>
           </motion.div>
         </motion.div>
 
+        {/* history --experience */}
         <motion.div
-          className="container flex flex-col-reverse lg:flex-row justify-center gap-10 md:gap-20 items-center mx-auto mt-10"
+          className="container flex flex-col-reverse lg:flex-row justify-center gap-10 md:gap-20 items-start mx-auto mt-16 px-5 pb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
         >
           <motion.div
-            className="flex flex-col w-[90%] lg:max-w-[40%] h-full"
+            className="flex flex-col w-[90%] lg:max-w-[40%] h-full font-mono"
             variants={slideRightVariants}
           >
+            <motion.div
+              className="text-cyber text-sm mb-2 opacity-80"
+              variants={slideUpVariants}
+            >
+              $ history --experience
+            </motion.div>
             <motion.h2
-              className="text-2xl md:text-3xl font-bold"
+              className="text-xl md:text-2xl font-bold text-foreground"
               variants={slideUpVariants}
             >
               {t("about.experience.title")}
             </motion.h2>
-            <div className="h-auto grow" />
-            <motion.p className="mt-10" variants={slideUpVariants}>
+            <motion.p className="mt-6 opacity-90" variants={slideUpVariants}>
               {t("about.experience.description")}
             </motion.p>
-            <motion.p className="mt-10" variants={slideUpVariants}>
+            <motion.p className="mt-4 opacity-90" variants={slideUpVariants}>
               {t("about.experience.description2")}
             </motion.p>
-            <motion.p className="mt-10" variants={slideUpVariants}>
+            <motion.p className="mt-4 opacity-90" variants={slideUpVariants}>
               {t("about.experience.description3")}
+            </motion.p>
+            <motion.p className="mt-4 opacity-90" variants={slideUpVariants}>
+              {t("about.experience.description4")}
             </motion.p>
           </motion.div>
 
@@ -240,7 +235,7 @@ export default function About() {
               >
                 {item.label && (
                   <motion.p
-                    className="text-center mb-3 uppercase"
+                    className="text-center mb-3 opacity-60 font-mono text-sm"
                     variants={slideUpVariants}
                   >
                     {item.label}

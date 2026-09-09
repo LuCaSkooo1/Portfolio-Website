@@ -1,8 +1,8 @@
 {
   "nav": {
-    "work": "Projekty",
-    "about": "Lucas",
-    "contact": "Kontakt"
+    "work": "projekty",
+    "about": "about",
+    "contact": "kontakt"
   },
   "cv": {
     "path": "/cv_sk_web.pdf"
@@ -22,9 +22,11 @@
     "openFigma": "Otvoriť vo Figme",
 
     "hero": {
-      "title": "Ahoj. Volám sa Lucas.",
-      "title2": "Dizajnér a vývojár.",
-      "subtitle": "Výber case studies, ktoré som vytvoril."
+      "prompt": "$ whoami",
+      "line1": "lucas.ligas",
+      "line2": "role: nadšenec kyberbezpečnosti",
+      "line3": "status: staviam. lámem. učím sa.",
+      "subtitle": "// vybrané case studies"
     },
     "cards": {
       "subtitle": "Pomáhame občanom Slovenska prostredníctvom prispôsobených návodov a tutoriálov na ich životé situácie.",
@@ -32,7 +34,7 @@
       "actionButton": "Zistiť viac"
     },
     "actionButton": "Zobraziť riešenie",
-    "otherProjects": "Ostatné Figma projekty",
+    "otherProjects": "// ostatné figma projekty",
     "navody": {
       "hero": {
         "title": "Pomáhame riešiť životné situácie",
@@ -251,32 +253,33 @@
   },
   "about": {
     "hero": {
-      "title": "Ja som Lucas."
+      "title": "$ cat about.md"
     },
     "about": {
-      "title": "Navrhovanie a vytváranie digitálnych produktov, ktoré riešia reálne problémy.",
-      "description": "Volám sa Lucas Ligas, UI/UX dizajnér a frontend vývojár zo Slovenska. Pracoval som na vládnom projekte a viedol som svoj tím Incomodum k viacerým víťazstvám v hackathonoch – naše nápady sú teraz implementované po celom Slovensku.",
-      "description2": "Som nadšený dizajnovým myslením a vytváraním digitálnych riešení, ktoré sú funkčné a zmysluplné."
+      "title": "// Frontend vývojár prechádzajúci do kyberbezpečnosti.",
+      "description": "Volám sa Lucas Ligas, vývojár zo Slovenska s pozadím vo frontend vývoji a produktovom dizajne. Pracoval som na vládnom projekte a viedol svoj tím Incomodum k viacerým víťazstvám v hackathonoch – naše riešenia sú dnes nasadené po celom Slovensku.",
+      "description2": "Teraz sa venujem kyberbezpečnosti: učím sa ofenzívne aj defenzívne základy, hrám CTF a využívam svoje inštinkty z tvorby produktov na uvažovanie o systémoch z pohľadu útočníka."
     },
     "experience": {
-      "title": "Skúsenosti",
-      "description": "UI/UX a frontend vývoj som objavil na strednej škole, kde som tiež absolvoval stáž v spoločnosti Wezeo. ",
-      "description2": "V treťom ročníku som spoluzakladal tím Incomodum, ktorý sa zúčastnil piatich slovenských hackathonov, kde raz získal 1. miesto, trikrát 2. miesto a raz 3. miesto. ",
-      "description3": "Počas jednej z týchto akcií som bol pozvaný pracovať ako konzultant v oblasti UI/UX pre Samosprávny Košický kraj."
+      "title": "// history --experience",
+      "description": "K webovému vývoju som sa dostal na strednej škole, kde som tiež absolvoval stáž v spoločnosti Wezeo.",
+      "description2": "V treťom ročníku som spoluzakladal tím Incomodum, ktorý sa zúčastnil piatich slovenských hackathonov – raz získal 1. miesto, trikrát 2. miesto a raz 3. miesto.",
+      "description3": "Počas jednej z týchto akcií som bol pozvaný pracovať ako konzultant v oblasti UI/UX pre Samosprávny Košický kraj.",
+      "description4": "Po strednej škole som nastúpil do Ekvie ako IT admin. Práve tam ma chytila sieťová infraštruktúra a network security — a to bol začiatok môjho posunu do kyberbezpečnosti."
     },
-    "foundation": "Základy",
+    "foundation": "// foundation",
     "highschool": "SPŠE Hálova 16",
     "highschoolName": "Programovanie Digitálnych Technologií"
   },
 
   "contact": {
     "hero": {
-      "title": "Kontakt.",
-      "subtitle": "V súčasnosti som otvorený práci a spolupráci."
+      "title": "$ cat contact.md",
+      "subtitle": "// otvorený práci a spoluprácam."
     },
-    "submit": "Odoslať",
-    "input1": "Celé meno",
-    "input2": "Správa",
+    "submit": "./send-message",
+    "input1": "meno",
+    "input2": "sprava",
     "error1": "Celé meno je povinné.",
     "error2": "E-mail je povinný.",
     "error3": "Zadajte platnú e-mailovú adresu.",

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import { useTranslation } from "../lib/useTranslation"
 
-import { Sun, Moon } from "lucide-react"
+import { Sun, Moon, TerminalSquare } from "lucide-react"
 
 export default function Header() {
   const { lang, setLang, t } = useTranslation()
@@ -16,7 +16,6 @@ export default function Header() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
-  // Fix hydration mismatch
   useEffect(() => {
     setMounted(true)
     const handleScroll = () => {
@@ -30,24 +29,28 @@ export default function Header() {
 
   function LinkButton({
     href,
-    children,
+    path,
+    label,
   }: {
     href: string
-    children: React.ReactNode
+    path: string
+    label: string
   }) {
     const active =
       href === "/"
-        ? pathname.startsWith("/") &&
-          !pathname.startsWith("/about") &&
-          !pathname.startsWith("/contact")
+        ? pathname === "/" ||
+          (pathname.startsWith("/") &&
+            !pathname.startsWith("/about") &&
+            !pathname.startsWith("/contact"))
         : pathname.startsWith(href)
     return (
       <Link
         href={href}
         aria-selected={active}
-        className="z-10 w-auto min-w-fit grow rounded-full border border-transparent px-0.5 py-2 text-center font-medium transition-colors aria-selected:border-[#ffffff]/20 aria-selected:bg-[#ffffff] sm:grow-0 sm:px-4 aria-selected:dark:bg-black"
+        className="z-10 w-auto min-w-fit grow rounded-md border border-transparent px-2 py-2 text-center font-mono transition-colors aria-selected:border-[color:var(--accent-cyber)]/50 aria-selected:bg-[color:var(--accent-cyber)]/10 aria-selected:text-[color:var(--accent-cyber)] hover:text-[color:var(--accent-cyber)] sm:grow-0 sm:px-3"
       >
-        {children}
+        <span className="opacity-50">~/</span>
+        <span>{label || path}</span>
       </Link>
     )
   }
@@ -57,21 +60,32 @@ export default function Header() {
       <div className="fixed top-0 left-0 flex w-full flex-col items-end md::items-center justify-center gap-2 p-5 sm:left-auto sm:w-auto sm:flex-row">
         <nav
           data-scrolled={isScrolled}
-          className="flex h-14 w-full justify-center rounded-full border border-transparent bg-transparent p-2 backdrop-blur-sm transition-all duration-300 data-[scrolled=true]:border-white/20 data-[scrolled=true]:bg-[#fbfbfb]/70 sm:w-auto data-[scrolled=true]:dark:bg-black/70"
+          className="flex h-14 w-full justify-center rounded-md border border-transparent bg-transparent p-2 backdrop-blur-sm transition-all duration-300 data-[scrolled=true]:border-[color:var(--accent-cyber)]/30 data-[scrolled=true]:bg-white/70 dark:data-[scrolled=true]:bg-black/70 sm:w-auto"
         >
-          <div className="relative flex w-full items-center gap-2 font-bold font-grotesk text-foreground text-sm">
-            {/* Nav Links */}
-            <LinkButton href="/">{t("nav.work")}</LinkButton>
-            <LinkButton href="/about">{t("nav.about")}</LinkButton>
-            <LinkButton href="/contact">{t("nav.contact")}</LinkButton>
+          <div className="relative flex w-full items-center gap-1 font-mono text-foreground text-sm">
+            <TerminalSquare
+              size={16}
+              className="text-[color:var(--accent-cyber)] mr-1 hidden sm:block"
+            />
+            <LinkButton href="/" path="work" label={t("nav.work") ?? "work"} />
+            <LinkButton
+              href="/about"
+              path="about"
+              label={t("nav.about") ?? "about"}
+            />
+            <LinkButton
+              href="/contact"
+              path="contact"
+              label={t("nav.contact") ?? "contact"}
+            />
 
-            {/* Language Button */}
             <button
               type="button"
               onClick={() => setLang(lang === "sk" ? "en" : "sk")}
-              className="z-10 rounded-full border border-transparent px-4 py-2 font-medium active:border-[#ffffff]/20 active:bg-[#ffffff] active:dark:bg-black"
+              className="z-10 rounded-md border border-transparent px-3 py-2 font-mono uppercase text-xs hover:border-[color:var(--accent-cyber)]/30 hover:text-[color:var(--accent-cyber)] transition-colors"
+              title="Toggle language"
             >
-              {lang === "sk" ? "SK" : "EN"}
+              --lang={lang}
             </button>
           </div>
         </nav>
@@ -79,7 +93,7 @@ export default function Header() {
           type="button"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           data-scrolled={isScrolled}
-          className="flex size-14 min-w-14 flex-row items-center justify-center rounded-full border border-transparent bg-transparent px-4 py-2 backdrop-blur-sm transition-all duration-300 data-[scrolled=true]:border-white/20 data-[scrolled=true]:bg-[#fbfbfb]/70 data-[scrolled=true]:dark:bg-black/70 text-foreground cursor-pointer"
+          className="flex size-14 min-w-14 flex-row items-center justify-center rounded-md border border-transparent bg-transparent px-4 py-2 backdrop-blur-sm transition-all duration-300 data-[scrolled=true]:border-[color:var(--accent-cyber)]/30 data-[scrolled=true]:bg-white/70 dark:data-[scrolled=true]:bg-black/70 text-foreground hover:text-[color:var(--accent-cyber)] cursor-pointer"
         >
           <Sun className="dark:-rotate-90 absolute rotate-0 scale-100 transition-all dark:scale-0" />
           <Moon className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
