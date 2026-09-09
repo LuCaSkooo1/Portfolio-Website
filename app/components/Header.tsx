@@ -85,7 +85,7 @@ export default function Header() {
               className="z-10 rounded-md border border-transparent px-3 py-2 font-mono uppercase text-xs hover:border-[color:var(--accent-cyber)]/30 hover:text-[color:var(--accent-cyber)] transition-colors"
               title="Toggle language"
             >
-              --lang={lang}
+              lang={lang}
             </button>
           </div>
         </nav>
