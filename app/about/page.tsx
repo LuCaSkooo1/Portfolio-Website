@@ -15,18 +15,40 @@ export default function About() {
     role?: string
     period: string
     label?: string
+    href?: string
   }
 
   const timelineData: TimelineItem[] = [
-    { title: "Ekvia", role: "IT Admin", period: "2025~" },
-    { title: "Košický S. Kraj", role: "UI UX Consultant", period: "2024-2025" },
-    { title: "Incomodum", role: "Designer / Dev", period: "2022~" },
-    { title: "Wezeo", role: "Dev Internship", period: "2020-2025" },
+    {
+      title: "Ekvia",
+      role: "IT Admin",
+      period: "2025~",
+      href: "https://ekvia.sk",
+    },
+    {
+      title: "Košický S. Kraj",
+      role: "UI UX Consultant",
+      period: "2024-2025",
+      href: "https://www.kosickazupa.sk/",
+    },
+    {
+      title: "Incomodum",
+      role: "Designer / Dev",
+      period: "2022~",
+      href: "https://incomodum.com",
+    },
+    {
+      title: "Wezeo",
+      role: "Dev Internship",
+      period: "2020-2025",
+      href: "https://wezeo.com",
+    },
     {
       title: t("about.highschool"),
       role: t("about.highschoolName"),
       period: "",
       label: t("about.foundation"),
+      href: "https://spsehalova.sk/",
     },
   ]
 
@@ -44,15 +66,6 @@ export default function About() {
       opacity: 1,
       y: 0,
       transition: { duration: 0.6, ease: "easeOut" },
-    },
-  }
-
-  const slideLeftVariants: Variants = {
-    hidden: { opacity: 0, x: 40 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.7, ease: "easeOut" },
     },
   }
 
@@ -92,25 +105,53 @@ export default function About() {
     title,
     role,
     period,
-  }) => (
-    <motion.div
-      className="rounded-md bg-white dark:bg-black border border-[#00d97e]/40 dark:border-[#00ff88]/30 hover:border-[#00d97e] dark:hover:border-[#00ff88] flex flex-row justify-between items-center p-4 px-5 mb-3 font-mono"
-      variants={timelineCardVariants}
-      whileHover="hover"
-      whileTap={{ scale: 0.98 }}
-      initial="hidden"
-      animate="visible"
-    >
-      <div className="flex flex-col">
-        <p className="font-bold leading-tight text-foreground">
-          <span className="text-[#00d97e] mr-2">▸</span>
-          {title}
-        </p>
-        <p className="text-sm leading-tight opacity-70">{role}</p>
-      </div>
-      <p className="text-xl font-bold opacity-60">{period}</p>
-    </motion.div>
-  )
+    href,
+  }) => {
+    const inner = (
+      <>
+        <div className="flex flex-col">
+          <p className="font-bold leading-tight text-foreground">
+            <span className="text-[#00d97e] mr-2">▸</span>
+            {title}
+          </p>
+          <p className="text-sm leading-tight opacity-70">{role}</p>
+        </div>
+        <p className="text-xl font-bold opacity-60">{period}</p>
+      </>
+    )
+    const className =
+      "rounded-md bg-white dark:bg-black border border-[#00d97e]/40 dark:border-[#00ff88]/30 hover:border-[#00d97e] dark:hover:border-[#00ff88] flex flex-row justify-between items-center p-4 px-5 mb-3 font-mono"
+
+    if (href) {
+      return (
+        <motion.a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${className} cursor-pointer`}
+          variants={timelineCardVariants}
+          whileHover="hover"
+          whileTap={{ scale: 0.98 }}
+          initial="hidden"
+          animate="visible"
+        >
+          {inner}
+        </motion.a>
+      )
+    }
+    return (
+      <motion.div
+        className={className}
+        variants={timelineCardVariants}
+        whileHover="hover"
+        whileTap={{ scale: 0.98 }}
+        initial="hidden"
+        animate="visible"
+      >
+        {inner}
+      </motion.div>
+    )
+  }
 
   useEffect(() => {
     hasAnimatedRef.current = false
@@ -245,6 +286,7 @@ export default function About() {
                   title={item.title}
                   role={item.role}
                   period={item.period}
+                  href={item.href}
                 />
               </motion.div>
             ))}

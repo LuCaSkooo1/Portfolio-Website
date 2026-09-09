@@ -16,32 +16,50 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Lucas Ligas| Portfolio",
+  metadataBase: new URL("https://www.lucasligas.com"),
+  title: "Lucas Ligas | Cybersecurity Enthusiast",
   description:
-    "Designer & Developer portfolio showcasing web apps, design projects, and creative work.",
+    "Portfolio of Lucas Ligas — cybersecurity enthusiast with a frontend and product design background. Case studies, CTFs, and things I've shipped.",
+  keywords: [
+    "Lucas Ligas",
+    "cybersecurity",
+    "network security",
+    "frontend developer",
+    "portfolio",
+    "Slovakia",
+    "CTF",
+    "IT admin",
+  ],
+  authors: [{ name: "Lucas Ligas", url: "https://www.lucasligas.com" }],
+  creator: "Lucas Ligas",
   openGraph: {
-    title: "Lucas Ligas | Portfolio",
+    title: "Lucas Ligas | Cybersecurity Enthusiast",
     description:
-      "Explore my portfolio: web development, UI/UX, and creative projects.",
+      "Cybersecurity enthusiast with a frontend background. Case studies, CTFs, and things I've built.",
     url: "https://www.lucasligas.com",
-    siteName: "Lucas Ligas Portfolio",
+    siteName: "Lucas Ligas",
     images: [
       {
-        url: "https://www.lucasligas.com/ogImage.png",
+        url: "/ogImage.png",
         width: 1200,
         height: 630,
-        alt: "Lucas Ligas – Portfolio Preview",
+        alt: "Lucas Ligas — cybersecurity enthusiast portfolio",
       },
     ],
     type: "website",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lucas Ligas | Portfolio",
+    title: "Lucas Ligas | Cybersecurity Enthusiast",
     description:
-      "Explore my portfolio: web development, UI/UX, and creative projects.",
-    images: ["https://lucasligas.com/ogImage.png"],
+      "Cybersecurity enthusiast with a frontend background. Case studies, CTFs, and things I've built.",
+    images: ["/ogImage.png"],
     creator: "@lucasligas",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 
