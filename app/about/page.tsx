@@ -34,7 +34,7 @@ export default function About() {
     {
       title: "Incomodum",
       role: "Designer / Dev",
-      period: "2022~",
+      period: "2023~",
       href: "https://incomodum.com",
     },
     {

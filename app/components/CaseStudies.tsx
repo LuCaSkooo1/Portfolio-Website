@@ -72,7 +72,7 @@ export default function CaseStudies() {
               </div>
 
               {/* Logo */}
-              <div className="flex justify-center pt-4">
+              <div className="flex justify-center">
                 <Image
                   src={s.logoLight}
                   alt={s.title}
@@ -100,9 +100,7 @@ export default function CaseStudies() {
                 <h3 className="text-foreground font-bold text-lg mb-3">
                   {s.title}
                 </h3>
-                <p className="text-sm mb-5 opacity-90">
-                  {t(s.descriptionKey)}
-                </p>
+                <p className="text-sm mb-5 opacity-90">{t(s.descriptionKey)}</p>
                 <div className="flex items-center font-medium card-term-accent">
                   <span>$ ./open</span>
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
